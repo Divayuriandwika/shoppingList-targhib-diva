@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import { Formik } from 'formik';
 import { withRouter, Link } from 'react-router-dom';
+import './Login.css';
 
 class Login extends Component {
 	render() {
 		return (
 			<MDBContainer fluid className="container-login align-items-center">
 				<MDBRow className="myRow align-items-center justify-content-center">
-					<MDBCol xl={5} lg={5} md={6} className="myCol bg-primary">
+					<MDBCol xl={5} lg={5} md={6} className="myCol bg-#e0f2f1 teal lighten-5">
 						<MDBRow>
 							<MDBCol className="text-center">
 								<h1>Login</h1>
@@ -88,7 +89,7 @@ class Login extends Component {
 													{errors.password && touched.password && errors.password}
 												</MDBCol>
 											</MDBRow>
-											<MDBRow className="pt-2">
+											<MDBRow className="pt-5">
 												<MDBCol>
 													<MDBBtn type="submit" disabled={isSubmitting}>
 														Submit

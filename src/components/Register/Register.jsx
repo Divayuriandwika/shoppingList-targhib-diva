@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
+import {MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn} from 'mdbreact';
+import { withRouter, Link } from 'react-router-dom';
 
 class Register extends Component {
 	render() {
 		return (
-			<div>
-				<div>
-					<h1>Anywhere in your app!</h1>
+			<MDBContainer fluid className="container-login align-items-center">
+				<MDBRow className="myRow align-items-center justify-content-center">
+					<MDBCol xl={5} lg={5} md={6} className="myCol bg-#e0f2f1 teal lighten-5">
+						<MDBRow>
+							<MDBCol className="text-center">
+								<h1>Register</h1>
+							</MDBCol>
+						</MDBRow>
+					<MDBRow>
+				<MDBCol className="text-center">
 					<Formik
 						initialValues={{ name: '', email: '', password: '' }}
 						validate={(values) => {
@@ -36,7 +45,7 @@ class Register extends Component {
 								})
 								.then((result) => {
 									alert('register successfully');
-									// this.props.history.push('/signin');
+									this.props.history.push('/');
 								});
 						}}
 					>
@@ -51,40 +60,73 @@ class Register extends Component {
 							/* and other goodies */
 						}) => (
 							<form onSubmit={handleSubmit}>
-								<input
+							<MDBRow className="pt-1">
+								<MDBCol className="text-center">
+									<MDBInput
+									className="inputText"
 									type="text"
 									name="name"
 									onChange={handleChange}
 									onBlur={handleBlur}
 									value={values.name}
+									label="name"
 								/>
 								{errors.name && touched.name && errors.name}
-								<input
+							</MDBCol>
+								</MDBRow>
+									<MDBRow>
+									<MDBCol className="text-center">
+									<MDBInput
+									className="inputText"
 									type="email"
 									name="email"
 									onChange={handleChange}
 									onBlur={handleBlur}
 									value={values.email}
+									label="email"
 								/>
 								{errors.email && touched.email && errors.email}
-								<input
+							</MDBCol>
+								</MDBRow>
+									<MDBRow>
+									<MDBCol className="text-center">
+									<MDBInput
+									className="inputText"
 									type="password"
 									name="password"
 									onChange={handleChange}
 									onBlur={handleBlur}
 									value={values.password}
+									label="password"
 								/>
 								{errors.password && touched.password && errors.password}
-								<button type="submit" disabled={isSubmitting}>
+							</MDBCol>
+								</MDBRow>
+									<MDBRow className="pt-3">
+									<MDBCol>
+									<MDBBtn type="submit" disabled={isSubmitting}>
 									Submit
-								</button>
+									</MDBBtn>
+										</MDBCol>
+											</MDBRow>
+											<MDBRow className="pt-2">
+												<MDBCol>
+													<p>Already have account ?</p>
+													<MDBBtn type="button">
+														<Link to="/">Login</Link>
+													</MDBBtn>
+												</MDBCol>
+											</MDBRow>
 							</form>
 						)}
 					</Formik>
-				</div>
-			</div>
+					</MDBCol>
+						</MDBRow>
+					</MDBCol>
+				</MDBRow>
+			</MDBContainer>
 		);
 	}
 }
 
-export default Register;
+export default withRouter(Register);
